@@ -5,10 +5,14 @@ using UnityEngine;
 public class SpawnObjects : MonoBehaviour
 {
     public GameObject fishingSpot;
-    int numFishSpots = Random.Range(1, 10);
+
+    private float nextActionTime = 10f;
+    private float period = 10f;
 
     void Start()
     {
+        int numFishSpots = Random.Range(1, 10);
+
         Vector3 center = transform.position;
 
         for (int i = 0; i < numFishSpots; i++)
@@ -19,7 +23,7 @@ public class SpawnObjects : MonoBehaviour
             fishSpot.transform.parent = transform;
         }
 
-        //InvokeRepeating("SpawnMore", 10.0f, 10.0f);
+        InvokeRepeating("SpawnMore", 10.0f, 10.0f);
     }
 
     Vector3 RandomCircle(Vector3 center, float radius)
@@ -32,13 +36,14 @@ public class SpawnObjects : MonoBehaviour
         return pos;
     }
 
-    void SpawnMore()
+    private void SpawnMore()
     {
         Vector3 center = transform.position;
         int chance = Random.Range(1, 100);
 
         if (chance == 100)
         {
+            Debug.Log("Spawning more spots");
             Vector3 pos = RandomCircle(center, 100f);
             var fishSpot = Instantiate(fishingSpot, pos, Quaternion.identity);
             fishSpot.transform.parent = transform;
