@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         }
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, Input.GetAxis("Vertical") * moveSpeed);
-        moveDirection.y = moveDirection.y + Physics.gravity.y;
+        moveDirection.y += Physics.gravity.y;
 
         controller.Move(moveDirection * Time.deltaTime);
     }
