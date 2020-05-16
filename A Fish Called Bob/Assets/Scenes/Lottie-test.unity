@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 1027828588}
   - component: {fileID: 1027828587}
   m_Layer: 0
-  m_Name: EndBit
+  m_Name: bob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLineEndpoint: {fileID: 495435536}
-  endBit: {fileID: 1027828585}
+  bob: {fileID: 1027828585}
 --- !u!120 &1515064739
 LineRenderer:
   m_ObjectHideFlags: 0

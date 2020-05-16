@@ -6,7 +6,7 @@ public class Fish : MonoBehaviour
 {
     private LineRenderer lineRenderer;
     public GameObject maxLineEndpoint;
-    public GameObject endBit;
+    public GameObject bob;
     private bool isCast = false;
 
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class Fish : MonoBehaviour
             Vector3 maxLineEnd = maxLineEndpoint.transform.position;
             maxLineEnd.y = 0.1f;
 
-            endBit.transform.position = maxLineEnd;
+            bob.transform.position = maxLineEnd;
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, maxLineEnd);
             return;
@@ -36,7 +36,7 @@ public class Fish : MonoBehaviour
             isCast = false;
             lineRenderer.SetPosition(0, Vector3.zero);
             lineRenderer.SetPosition(1, Vector3.zero);
-            endBit.transform.position = transform.position;
+            bob.transform.position = transform.position;
         } 
     }
 }
