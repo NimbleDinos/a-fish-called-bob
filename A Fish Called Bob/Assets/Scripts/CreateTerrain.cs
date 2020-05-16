@@ -69,9 +69,9 @@ public class CreateTerrain : MonoBehaviour
             {
                 for(int z = -worldSizeZ; z < worldSizeZ; z++)
                 {
-                    Vector3 pos = new Vector3((x * planeSize + startPos.x),
+                    Vector3 pos = new Vector3((x * planeSize + playerX),
                                             0,
-                                           (z * planeSize + startPos.z));
+                                           (z * planeSize + playerZ));
 
                     string tileName = "Tile_" + ((int)pos.x).ToString() + "_" + ((int)pos.z).ToString();
 
