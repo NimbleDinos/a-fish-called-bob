@@ -22,12 +22,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
-        {
-            Debug.Log("Space pressed");
+        //if (Input.GetKeyDown("space"))
+        //{
+        //    Debug.Log("Space pressed");
 
-            spawner.CatchFish(player.transform.position);
-        }
+        //    spawner.CatchFish(player.transform.position);
+        //}
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, Input.GetAxis("Vertical") * moveSpeed);
         if (moveDirection != Vector3.zero)
