@@ -30,6 +30,11 @@ public class Player : MonoBehaviour
         }
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, Input.GetAxis("Vertical") * moveSpeed);
+        if (moveDirection != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection), 0.15f);
+        }
+
         moveDirection.y += Physics.gravity.y;
 
         controller.Move(moveDirection * Time.deltaTime);
