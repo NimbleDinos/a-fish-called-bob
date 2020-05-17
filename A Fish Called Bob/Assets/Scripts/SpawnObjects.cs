@@ -10,7 +10,7 @@ public class SpawnObjects : MonoBehaviour
     void Start()
     {
         int numFishSpots = Random.Range(1, 10);
-        int numRocks = Random.Range(1, 10);
+        int numRocks = Random.Range(0, 5);
 
         Vector3 center = transform.position;
 
@@ -23,11 +23,16 @@ public class SpawnObjects : MonoBehaviour
 
         for (int i = 0; i < numRocks; i++)
         {
-            Vector3 pos = RandomCircle(center, 100f);
-            var rocks = Instantiate(rock, pos, Quaternion.Euler(new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360))));
+            Vector3 pos = new Vector3(Random.Range(-360, 360), 0, Random.Range(-360, 360));
+            var rocks = Instantiate(rock);
+            //var rocks = Instantiate(rock, pos, Quaternion.Euler(new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360))));
             //rocks.transform.rotation = Random.rotation;
             //rocks.transform.eulerAngles = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), Random.Range(-100, 100));
-            rocks.transform.parent = transform;
+            //rocks.transform.parent = transform;
+            rocks.transform.position = pos;
+            Vector3 rot = new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
+            rocks.transform.Rotate(rot);
+            rocks.transform.localScale = Vector3.one * Random.Range(0,30);
         }
 
         InvokeRepeating("SpawnMore", 10.0f, 10.0f);
