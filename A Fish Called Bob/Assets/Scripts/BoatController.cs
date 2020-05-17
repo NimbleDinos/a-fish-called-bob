@@ -7,7 +7,7 @@ public class BoatController : MonoBehaviour
     public Animator ThrottleRef, SteeringRef;
     public GameObject Boat;
 
-    public float steeringAngle = 0, throttle = 0, speed = 1, curSpeed = 0;
+    public float steeringAngle = 0, throttle = 0, speed = 15, curSpeed = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class BoatController : MonoBehaviour
 
         curSpeed += (throttle - curSpeed) * Time.deltaTime;
 
-        Boat.GetComponent<Transform>().position = Boat.GetComponent<Transform>().position + (Boat.transform.forward * -1 * speed * curSpeed);
+        Boat.GetComponent<Transform>().position = Boat.GetComponent<Transform>().position + (Boat.transform.forward * -1 * speed * curSpeed * Time.deltaTime);
 
         Vector3 turn = Vector3.up * (steeringAngle - .5f) * curSpeed;
         Boat.GetComponent<Transform>().Rotate(turn);

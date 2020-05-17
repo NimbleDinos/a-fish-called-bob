@@ -38,7 +38,7 @@ public class PlayerController2 : MonoBehaviour
             }
         }
 
-
+        
 
         Vector3 motion = new Vector3();
         if (Input.GetKey("w"))

@@ -107,4 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishingSpot: {fileID: 7568830818263898533, guid: c16e6c6831d2a43b389f36ec0cdb56b6,
     type: 3}
-  rock: {fileID: 164435012326512875, guid: 4aa43c385ad514845ae12707b4c0c376, type: 3}
+  rock:
+  - {fileID: 7976532973849986705, guid: 8e9c430dffe8edb44a6cbba83ef9db86, type: 3}
+  - {fileID: 1997525613046216059, guid: a240b71933f6d3540ab5db5ffa843d32, type: 3}
+  - {fileID: 6864635280669441750, guid: b5bb8169ad42a44488a21c2bd7c9900c, type: 3}
+  - {fileID: 8651425629682154252, guid: 1a92a9749aaeae6448e9bbbfe9a836bb, type: 3}
