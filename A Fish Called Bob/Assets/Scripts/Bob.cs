@@ -7,7 +7,7 @@ public class Bob : MonoBehaviour
     public SpawnFishItem objectSpawner;
     public GameObject player;
     public GameObject rodTip;
-    public float moveSpeed = 10.0f;
+    public float moveSpeed = 1000.0f;
     private Fish fish;
 
     private GameObject obj;
@@ -26,7 +26,6 @@ public class Bob : MonoBehaviour
         {
             Debug.Log("Colliding");
             //obj.transform.position = Vector3.MoveTowards(obj.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-            obj.GetComponent<Rigidbody>().AddForce(Vector3.MoveTowards(player.transform.position, obj.transform.position + Vector3.up, moveSpeed * Time.deltaTime));
             if (Vector3.Distance(obj.transform.position, player.transform.position) <= 1.0f)
             {
                 collision = true;
@@ -49,6 +48,8 @@ public class Bob : MonoBehaviour
             Debug.Log("STUFF");
             obj = objectSpawner.CatchFish(other.transform.position);
             collision = true;
+            obj.GetComponent<Rigidbody>().AddForce(Vector3.MoveTowards(obj.transform.position, player.transform.position + Vector3.up, moveSpeed));
+
         }
     }
 }
