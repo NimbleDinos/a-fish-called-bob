@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController2 : MonoBehaviour
 {
-    public GameObject BoatSwitcher;
+    public GameObject BoatSwitcher, CameraObj;
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +20,12 @@ public class PlayerController2 : MonoBehaviour
             Ray ray = new Ray();
             RaycastHit hit;
 
-            ray.direction = transform.GetComponentInChildren<Transform>().TransformDirection(Vector3.forward);
+            ray.direction = CameraObj.transform.TransformDirection(Vector3.forward);
             ray.origin = transform.position;
 
             if (Physics.Raycast(ray, out hit, 10))
             {
-                Debug.DrawRay(transform.position, transform.GetComponentInChildren<Transform>().TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                Debug.DrawRay(CameraObj.transform.position, CameraObj.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 Debug.Log(hit.collider.name);
                 if(hit.collider.name == "Door")
                 {
@@ -37,16 +37,19 @@ public class PlayerController2 : MonoBehaviour
                 }
             }
         }
+
+
+
         Vector3 motion = new Vector3();
         if (Input.GetKey("w"))
-            motion += transform.TransformDirection(Vector3.forward);
+            motion += CameraObj.transform.TransformDirection(Vector3.forward);
         else if (Input.GetKey("s"))
-            motion += transform.TransformDirection(Vector3.forward * -1);
+            motion += CameraObj.transform.TransformDirection(Vector3.forward * -1);
 
         if (Input.GetKey("a"))
-            motion += transform.TransformDirection(Vector3.right * -1 );
+            motion += CameraObj.transform.TransformDirection(Vector3.right * -1 );
         else if (Input.GetKey("d"))
-            motion += transform.TransformDirection(Vector3.right );
+            motion += CameraObj.transform.TransformDirection(Vector3.right );
 
         motion.y = Physics.gravity.y;
         motion *= Time.deltaTime * 5;

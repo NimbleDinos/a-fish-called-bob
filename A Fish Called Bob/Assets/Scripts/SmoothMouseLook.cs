@@ -6,6 +6,8 @@ using System.Collections.Generic;
 public class SmoothMouseLook : MonoBehaviour
 {
 
+	public GameObject camera;
+
 	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
 	public RotationAxes axes = RotationAxes.MouseXAndY;
 	public float sensitivityX = 15F;
@@ -72,7 +74,7 @@ public class SmoothMouseLook : MonoBehaviour
 			Quaternion yQuaternion = Quaternion.AngleAxis(rotAverageY, Vector3.left);
 			Quaternion xQuaternion = Quaternion.AngleAxis(rotAverageX, Vector3.up);
 
-			transform.localRotation = originalRotation * xQuaternion * yQuaternion;
+			camera.transform.localRotation = originalRotation * xQuaternion * yQuaternion;
 		}
 		else if (axes == RotationAxes.MouseX)
 		{
@@ -95,7 +97,7 @@ public class SmoothMouseLook : MonoBehaviour
 			rotAverageX = ClampAngle(rotAverageX, minimumX, maximumX);
 
 			Quaternion xQuaternion = Quaternion.AngleAxis(rotAverageX, Vector3.up);
-			transform.localRotation = originalRotation * xQuaternion;
+			camera.transform.localRotation = originalRotation * xQuaternion;
 		}
 		else
 		{
@@ -118,7 +120,7 @@ public class SmoothMouseLook : MonoBehaviour
 			rotAverageY = ClampAngle(rotAverageY, minimumY, maximumY);
 
 			Quaternion yQuaternion = Quaternion.AngleAxis(rotAverageY, Vector3.left);
-			transform.localRotation = originalRotation * yQuaternion;
+			camera.transform.localRotation = originalRotation * yQuaternion;
 		}
 	}
 
@@ -127,7 +129,7 @@ public class SmoothMouseLook : MonoBehaviour
 		Rigidbody rb = GetComponent<Rigidbody>();
 		if (rb)
 			rb.freezeRotation = true;
-		originalRotation = transform.localRotation;
+		originalRotation = camera.transform.localRotation;
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 

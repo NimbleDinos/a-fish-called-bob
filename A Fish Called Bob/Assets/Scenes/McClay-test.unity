@@ -946,6 +946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoatSwitcher: {fileID: 1106535633}
+  CameraObj: {fileID: 1957585766}
 --- !u!114 &2037959371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,6 +959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1892e9aff6d9ed64bb4d17bc6ecc4daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 1957585766}
   axes: 0
   sensitivityX: 3
   sensitivityY: 3
@@ -977,6 +979,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boat (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695666576454475813, guid: a85b38726f2125f40ab7a68ae6afc83c,
+        type: 3}
+      propertyPath: m_Name
+      value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695666576454475813, guid: a85b38726f2125f40ab7a68ae6afc83c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695666576454475813, guid: a85b38726f2125f40ab7a68ae6afc83c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7469484624682501897, guid: a85b38726f2125f40ab7a68ae6afc83c,
+        type: 3}
+      propertyPath: m_Name
+      value: Wheel
+      objectReference: {fileID: 0}
+    - target: {fileID: -492420421572216379, guid: a85b38726f2125f40ab7a68ae6afc83c,
+        type: 3}
+      propertyPath: m_Name
+      value: Throttle
       objectReference: {fileID: 0}
     - target: {fileID: -6166381988907012391, guid: a85b38726f2125f40ab7a68ae6afc83c,
         type: 3}
@@ -1063,11 +1090,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -492420421572216379, guid: a85b38726f2125f40ab7a68ae6afc83c,
-        type: 3}
-      propertyPath: m_Name
-      value: Throttle
-      objectReference: {fileID: 0}
     - target: {fileID: -113181020801827196, guid: a85b38726f2125f40ab7a68ae6afc83c,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -1132,26 +1154,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.07080815
-      objectReference: {fileID: 0}
-    - target: {fileID: 4695666576454475813, guid: a85b38726f2125f40ab7a68ae6afc83c,
-        type: 3}
-      propertyPath: m_Name
-      value: Door
-      objectReference: {fileID: 0}
-    - target: {fileID: 4695666576454475813, guid: a85b38726f2125f40ab7a68ae6afc83c,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 4695666576454475813, guid: a85b38726f2125f40ab7a68ae6afc83c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7469484624682501897, guid: a85b38726f2125f40ab7a68ae6afc83c,
-        type: 3}
-      propertyPath: m_Name
-      value: Wheel
       objectReference: {fileID: 0}
     - target: {fileID: 8833720299871980622, guid: a85b38726f2125f40ab7a68ae6afc83c,
         type: 3}
