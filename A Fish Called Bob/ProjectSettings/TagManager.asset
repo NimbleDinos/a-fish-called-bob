@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Door
   - Ladder
+  - Sellable
+  - Seller
   layers:
   - Default
   - TransparentFX
