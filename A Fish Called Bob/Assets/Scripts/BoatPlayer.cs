@@ -15,6 +15,10 @@ public class BoatPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
+
+
         if(controlBoat)
         {
             Player.SetActive(false);
@@ -22,8 +26,16 @@ public class BoatPlayer : MonoBehaviour
         }
         else
         {
+            Boat.GetComponent<BoatController>().curSpeed = 0;
+            Boat.GetComponent<BoatController>().ThrottleRef.Play("Throttle", 0, 0);
+            Boat.GetComponent<BoatController>().throttle = 0;
             Player.SetActive(true);
             Boat.SetActive(false);
+        }
+
+        if (controlBoat && Input.GetKeyUp("e"))
+        {
+            controlBoat = false;
         }
     }
 }
