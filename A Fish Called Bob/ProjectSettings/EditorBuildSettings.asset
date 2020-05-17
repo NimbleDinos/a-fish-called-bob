@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/McClay-test.unity
+    guid: 9ad0decf0cdeba645b4af6a851c7f5b4
   m_configObjects: {}

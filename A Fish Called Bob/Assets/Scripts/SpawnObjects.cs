@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnObjects : MonoBehaviour
 {
     public GameObject fishingSpot;
-    public GameObject rock;
+    public GameObject[] rock;
 
     void Start()
     {
@@ -24,7 +24,12 @@ public class SpawnObjects : MonoBehaviour
         for (int i = 0; i < numRocks; i++)
         {
             Vector3 pos = new Vector3(Random.Range(-360, 360), 0, Random.Range(-360, 360));
-            var rocks = Instantiate(rock);
+
+            if (pos.x < 15 && pos.x > -15)
+                pos.x = 32;
+            if (pos.z < 15 && pos.z > -15)
+                pos.z = 22;
+            var rocks = Instantiate(rock[Random.Range(0,rock.Length)]);
             //var rocks = Instantiate(rock, pos, Quaternion.Euler(new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360))));
             //rocks.transform.rotation = Random.rotation;
             //rocks.transform.eulerAngles = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), Random.Range(-100, 100));
@@ -32,7 +37,7 @@ public class SpawnObjects : MonoBehaviour
             rocks.transform.position = pos;
             Vector3 rot = new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
             rocks.transform.Rotate(rot);
-            rocks.transform.localScale = Vector3.one * Random.Range(0,30);
+            rocks.transform.localScale = Vector3.one * (Random.Range(0,30) * 0.25f);
         }
 
         InvokeRepeating("SpawnMore", 10.0f, 10.0f);

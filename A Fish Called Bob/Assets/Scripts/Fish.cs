@@ -39,7 +39,7 @@ public class Fish : MonoBehaviour
             }
 
             aim.transform.position = transform.position + (transform.TransformDirection(Vector3.forward) * dist);
-            aim.transform.position = new Vector3(aim.transform.position.x, 1, aim.transform.position.z);
+            aim.transform.position = new Vector3(aim.transform.position.x, 0, aim.transform.position.z);
         }
 
 
