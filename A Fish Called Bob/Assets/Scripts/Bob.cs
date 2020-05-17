@@ -8,48 +8,46 @@ public class Bob : MonoBehaviour
     public GameObject player;
     public GameObject rodTip;
     public float moveSpeed = 1000.0f;
-    private Fish fish;
 
+    private Fish fish;
     private GameObject obj;
-    private bool collision = false;
+    private bool timeWaited = false;
+    private float startTime;
+    private int randTime;
 
     // Start is called before the first frame update
     void Start()
     {
         fish = rodTip.GetComponent<Fish>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (collision)
-        {
-            Debug.Log("Colliding");
-            //obj.transform.position = Vector3.MoveTowards(obj.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-            if (Vector3.Distance(obj.transform.position, player.transform.position) <= 1.0f)
-            {
-                collision = true;
-            }
-        }
+        
     }
 
     void OnTriggerEnter(Collider other)
     {
-        
+        startTime = Time.realtimeSinceStartup;
+        randTime = Random.Range(1, 10);
+        timeWaited = false;
     }
 
     void OnTriggerStay(Collider other)
     {
-        //Debug.Log("Collision between bob and fishing spot");
-        Debug.Log(other.gameObject.tag.ToString());
-        if (other.gameObject.tag == "FishingSpot")
+        if ((Time.realtimeSinceStartup >= startTime + randTime) && timeWaited == false)
         {
-            fish.ResetLine();
-            Debug.Log("STUFF");
-            obj = objectSpawner.CatchFish(other.transform.position);
-            collision = true;
-            obj.GetComponent<Rigidbody>().AddForce(Vector3.MoveTowards(obj.transform.position, player.transform.position + Vector3.up, moveSpeed));
-
+            if (other.gameObject.tag == "FishingSpot")
+            {
+                timeWaited = true;
+                fish.ResetLine();
+                Debug.Log("STUFF");
+                obj = objectSpawner.CatchFish(other.transform.position);
+                obj.GetComponent<Rigidbody>().AddForce(Vector3.MoveTowards(obj.transform.position, player.transform.position + Vector3.up, moveSpeed));
+                Destroy(other.gameObject);
+            }
         }
     }
 }
