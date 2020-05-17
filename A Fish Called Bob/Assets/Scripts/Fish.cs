@@ -33,10 +33,15 @@ public class Fish : MonoBehaviour
 
         if (Input.anyKeyDown && isCast)
         {
-            isCast = false;
-            lineRenderer.SetPosition(0, Vector3.zero);
-            lineRenderer.SetPosition(1, Vector3.zero);
-            bob.transform.position = transform.position;
+            ResetLine();
         } 
+    }
+
+    public void ResetLine()
+    {
+        isCast = false;
+        lineRenderer.SetPosition(0, Vector3.zero);
+        lineRenderer.SetPosition(1, Vector3.zero);
+        bob.transform.position = transform.position;
     }
 }

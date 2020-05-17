@@ -4,35 +4,51 @@ using UnityEngine;
 
 public class Bob : MonoBehaviour
 {
-    public SpawnFishItem obejctSpawner;
+    public SpawnFishItem objectSpawner;
     public GameObject player;
+    public GameObject rodTip;
+    public float moveSpeed = 10.0f;
+    private Fish fish;
+
+    private GameObject obj;
+    private bool collision = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        fish = rodTip.GetComponent<Fish>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (collision)
+        {
+            Debug.Log("Colliding");
+            //obj.transform.position = Vector3.MoveTowards(obj.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+            obj.GetComponent<Rigidbody>().AddForce(Vector3.MoveTowards(player.transform.position, obj.transform.position + Vector3.up, moveSpeed * Time.deltaTime));
+            if (Vector3.Distance(obj.transform.position, player.transform.position) <= 1.0f)
+            {
+                collision = true;
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerStay(Collider other)
     {
-        Debug.Log("Collision");
-    }
-
-    void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.tag == "FishingSpot")
+        //Debug.Log("Collision between bob and fishing spot");
+        Debug.Log(other.gameObject.tag.ToString());
+        if (other.gameObject.tag == "FishingSpot")
         {
-            Debug.Log("Collision between bob and fishing spot");
-            int time = Random.Range(1, 10);
-            //yield return new WaitForSeconds(time);
-            Vector3 spawnPos = player.transform.position;
-            spawnPos.y += 1.0f;
-            obejctSpawner.CatchFish(spawnPos);
+            fish.ResetLine();
+            Debug.Log("STUFF");
+            obj = objectSpawner.CatchFish(other.transform.position);
+            collision = true;
         }
     }
 }
